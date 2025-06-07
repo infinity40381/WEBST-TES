@@ -1,0 +1,116 @@
+{
+  "collections": {
+    "users": {
+      "uid": "string (primary key)",
+      "email": "string",
+      "username": "string",
+      "displayName": "string",
+      "photoURL": "string",
+      "bio": "string",
+      "createdAt": "timestamp",
+      "isPrivate": "boolean",
+      "followers": ["user_id"],
+      "following": ["user_id"],
+      "gameIds": {
+        "valorant": "string",
+        "csgo": "string",
+        "leagueoflegends": "string"
+      },
+      "socialLinks": {
+        "twitch": "string",
+        "youtube": "string",
+        "twitter": "string",
+        "instagram": "string"
+      },
+      "savedPosts": ["post_id"]
+    },
+    "posts": {
+      "id": "string (auto-generated)",
+      "author": {
+        "id": "string (reference to users)",
+        "username": "string",
+        "displayName": "string",
+        "photoURL": "string"
+      },
+      "content": "string",
+      "mediaUrl": "string",
+      "mediaType": "string (image|video)",
+      "gameTag": "string",
+      "createdAt": "timestamp",
+      "likes": ["user_id"],
+      "saves": ["user_id"],
+      "commentsCount": "number",
+      "subcollections": {
+        "comments": {
+          "id": "string (auto-generated)",
+          "text": "string",
+          "author": {
+            "id": "string (reference to users)",
+            "username": "string",
+            "displayName": "string",
+            "photoURL": "string"
+          },
+          "createdAt": "timestamp",
+          "likes": ["user_id"]
+        }
+      }
+    },
+    "conversations": {
+      "id": "string (auto-generated)",
+      "participants": ["user_id"],
+      "lastMessage": {
+        "text": "string",
+        "senderId": "string",
+        "timestamp": "timestamp"
+      },
+      "subcollections": {
+        "messages": {
+          "id": "string (auto-generated)",
+          "senderId": "string (reference to users)",
+          "text": "string",
+          "mediaUrl": "string",
+          "mediaType": "string (image|video)",
+          "timestamp": "timestamp",
+          "read": "boolean"
+        }
+      }
+    },
+    "notifications": {
+      "id": "string (auto-generated)",
+      "userId": "string (reference to users)",
+      "type": "string (follow|like|comment|mention)",
+      "from": {
+        "id": "string (reference to users)",
+        "username": "string",
+        "displayName": "string",
+        "photoURL": "string"
+      },
+      "content": "string",
+      "resourceId": "string (post_id or comment_id)",
+      "createdAt": "timestamp",
+      "read": "boolean"
+    }
+  },
+  "indexes": [
+    {
+      "collection": "posts",
+      "fields": ["author.id", "createdAt"]
+    },
+    {
+      "collection": "posts",
+      "fields": ["gameTag", "createdAt"]
+    },
+    {
+      "collection": "users",
+      "fields": ["username"]
+    },
+    {
+      "collection": "conversations",
+      "fields": ["participants", "lastMessage.timestamp"]
+    },
+    {
+      "collection": "notifications",
+      "fields": ["userId", "read", "createdAt"]
+    }
+  ]
+}
