@@ -161,8 +161,8 @@ const Header: React.FC = () => {
               <Link to="/" className="hover:text-purple-500 transition font-medium">
                 Home
               </Link>
-              <Link to="/live-stream" className="hover:text-purple-500 transition font-medium">
-                Live Stream
+              <Link to="/tournament" className="hover:text-purple-500 transition font-medium">
+                Turnuvalar
               </Link>
               <Link to="/messages" className="hover:text-purple-500 transition font-medium">
                 Messages
@@ -273,11 +273,11 @@ const Header: React.FC = () => {
                 Home
               </Link>
               <Link 
-                to="/live-stream" 
+                to="/tournament" 
                 className="block py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Live Stream
+                Turnuvalar
               </Link>
               <Link 
                 to="/messages" 

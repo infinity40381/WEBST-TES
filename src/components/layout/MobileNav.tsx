@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, MessageSquare, Video, Bell, User } from 'lucide-react';
+import { Home, MessageSquare, Trophy, Bell, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -23,11 +23,11 @@ const MobileNav: React.FC = () => {
         </Link>
         
         <Link 
-          to="/live-stream" 
-          className={`flex flex-col items-center justify-center py-3 hover:text-purple-500 transition ${location.pathname.includes('/live-stream') ? 'text-purple-500' : ''}`}
+          to="/tournament" 
+          className={`flex flex-col items-center justify-center py-3 hover:text-purple-500 transition ${location.pathname.includes('/tournament') ? 'text-purple-500' : ''}`}
         >
-          <Video size={24} />
-          <span className="text-xs mt-1">Live</span>
+          <Trophy size={24} />
+          <span className="text-xs mt-1">Turnuva</span>
         </Link>
         
         <Link 
